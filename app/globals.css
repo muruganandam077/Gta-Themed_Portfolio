@@ -1,0 +1,238 @@
+/* Pricedown local/font-face — avoid 404s if files not present */
+@font-face {
+  font-family: 'Pricedown';
+  src: local('Pricedown'),
+       url('/fonts/pricedown-bl.woff2') format('woff2'),
+       url('/fonts/pricedown-bl.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+  /* If local/font files are missing, fallbacks from CSS variables will be used */
+}
+
+/* Rage Italic font */
+@font-face {
+  font-family: 'Rage Italic';
+  src: url('/fonts/RageItalic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Squada+One&family=Teko:wght@700&family=Inter:wght@400;500;600;700&display=swap');
+@import './responsive.css';
+
+:root {
+  /* Pricedown with multiple fallbacks that look similar */
+  --font-pricedown: 'Pricedown', 'Anton', 'Squada One', 'Teko', 'Impact', 'Arial Black', sans-serif;
+  --font-rage: 'Rage Italic', cursive;
+  --font-sans: 'Inter', system-ui, sans-serif;
+  --gta-pink: #FF006E;
+  --gta-dark: #000000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  background: #000;
+  color: #fff;
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Smooth scrolling handled by Lenis */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--gta-pink);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF1A7F;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Selection color */
+::selection {
+  background: var(--gta-pink);
+  color: #fff;
+}
+
+/* Focus visible */
+*:focus-visible {
+  outline: 2px solid var(--gta-pink);
+  outline-offset: 2px;
+}
+
+/* Typography utilities */
+.font-pricedown {
+  font-family: var(--font-pricedown);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.font-rage {
+  font-family: var(--font-rage);
+}
+
+.font-sans {
+  font-family: var(--font-sans);
+}
+
+/* GTA-style text shadow */
+.text-gta-shadow {
+  text-shadow: 3px 3px 0px rgba(0, 0, 0, 0.8);
+}
+
+/* Text effects */
+.text-glow-pink {
+  text-shadow: 0 0 20px var(--gta-pink);
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Vintage film effect */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+  background:
+    repeating-linear-gradient(
+      0deg,
+      rgba(0, 0, 0, 0.15),
+      rgba(0, 0, 0, 0.15) 1px,
+      transparent 1px,
+      transparent 2px
+    );
+  opacity: 0.03;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9998;
+  background: radial-gradient(ellipse at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+  mix-blend-mode: multiply;
+}
+
+/* Grid background (optional decorative element) */
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Glass effect */
+.glass {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* GTA Menu hover effect */
+.gta-menu-item {
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.gta-menu-item::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-left: 12px solid var(--gta-pink);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.gta-menu-item:hover::before,
+.gta-menu-item.active::before {
+  opacity: 1;
+}
+
+.gta-menu-item:hover,
+.gta-menu-item.active {
+  color: var(--gta-pink);
+  transform: translateX(5px);
+}

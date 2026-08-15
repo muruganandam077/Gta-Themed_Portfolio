@@ -1,0 +1,102 @@
+/* Responsive overrides and mobile optimizations */
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  /* Reduce font sizes for mobile */
+  .font-condensed {
+    letter-spacing: 0.01em;
+  }
+
+  /* Adjust HUD for mobile */
+  .scene-title-mobile {
+    font-size: 2rem;
+  }
+
+  /* Hide complex effects on mobile */
+  .hide-mobile {
+    display: none !important;
+  }
+
+  /* Simplify cursor on mobile */
+  body {
+    cursor: auto !important;
+  }
+
+  * {
+    cursor: auto !important;
+  }
+
+  /* Adjust mini-map size */
+  .minimap-mobile {
+    width: 120px;
+    height: 120px;
+  }
+
+  /* Stack status bar vertically */
+  .status-mobile {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  /* Improve touch targets */
+  button,
+  a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+
+  /* Adjust scroll indicator */
+  .scroll-indicator-mobile {
+    bottom: 2rem;
+  }
+}
+
+/* Tablet adjustments */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .scene-title-tablet {
+    font-size: 3rem;
+  }
+
+  .minimap-tablet {
+    width: 160px;
+    height: 160px;
+  }
+}
+
+/* Large desktop */
+@media (min-width: 1920px) {
+  .container-xl {
+    max-width: 1800px;
+    margin: 0 auto;
+  }
+}
+
+/* Landscape mobile */
+@media (max-width: 896px) and (orientation: landscape) {
+  .landscape-adjust {
+    padding: 1rem;
+  }
+
+  .hud-landscape {
+    font-size: 0.875rem;
+  }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .video-container video {
+    image-rendering: -webkit-optimize-contrast;
+  }
+}
+
+/* Print styles */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: black;
+  }
+}
