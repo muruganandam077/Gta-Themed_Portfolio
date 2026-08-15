@@ -1,242 +1,273 @@
-# GTA-Inspired Cinematic Portfolio
+# 🎮 GTA-Themed Portfolio Website
 
-A production-quality, cinematic developer portfolio website inspired by GTA's visual language and interaction style. Built with Next.js, Three.js, GSAP, and your custom video assets.
+A cinematic, Grand Theft Auto-inspired portfolio website built with Next.js 14, Three.js, and GSAP. Features immersive video backgrounds, smooth scroll animations, and authentic GTA-style HUD elements.
 
-## Features
+![Next.js](https://img.shields.io/badge/Next.js-14-black?style=for-the-badge&logo=next.js)
+![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.js&logoColor=white)
+![GSAP](https://img.shields.io/badge/GSAP-88CE02?style=for-the-badge&logo=greensock&logoColor=white)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
 
-- 🎮 **Game-Style Interface**: GTA-inspired HUD, menu system, and visual language
-- 🎬 **Cinematic Experience**: Scroll-controlled video transitions with camera movement
-- 🎯 **7 Interactive Scenes**: Home, About, Skills, Projects, Experience, Achievements, Contact
-- ⚡ **Smooth Animations**: GSAP + ScrollTrigger + Lenis for buttery smooth scrolling
-- 🎨 **Custom Design System**: GTA-inspired typography, colors, and UI components
-- ⌨️ **Keyboard Navigation**: Full keyboard support with arrow keys and ESC
-- 📱 **Responsive**: Optimized for desktop, tablet, and mobile
-- ♿ **Accessible**: Reduced motion support, semantic HTML, keyboard navigation
+## ✨ Features
 
-## Tech Stack
+- 🎬 **Cinematic Experience**: 7 scroll-controlled video scenes with smooth transitions
+- 🎮 **GTA-Style HUD**: Authentic game interface with signal, time, money, health, and wanted stars
+- 🗺️ **Interactive Mini-Map**: Custom Tambaram GTA map with player marker
+- 🎨 **Authentic Design**: Pricedown and Rage Italic fonts, pink accent colors (#FF006E)
+- 🎯 **Scene Navigation**: Quick navigation menu on home screen
+- ⚡ **Smooth Scrolling**: Lenis smooth scroll with GSAP ScrollTrigger animations
+- 📱 **Responsive Design**: Optimized for all screen sizes
+- 🎭 **Vintage Effects**: Film grain and vignette overlays for cinematic feel
+- 🔄 **Dynamic Stats**: Money and health values change as you navigate scenes
 
-- **Framework**: Next.js 14+ with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS + Custom CSS
-- **Animation**: GSAP, ScrollTrigger
-- **Smooth Scroll**: Lenis
-- **3D/Effects**: Three.js, React Three Fiber (ready for enhancement)
+## 🚀 Tech Stack
 
-## Getting Started
+- **Framework**: [Next.js 14](https://nextjs.org/) with App Router
+- **Language**: [TypeScript](https://www.typescriptlang.org/)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **3D Graphics**: [Three.js](https://threejs.org/) + [React Three Fiber](https://docs.pmnd.rs/react-three-fiber)
+- **Animations**: [GSAP](https://greensock.com/gsap/) with ScrollTrigger
+- **Smooth Scroll**: [Lenis](https://lenis.studiofreight.com/)
+- **Fonts**: Pricedown (GTA font), Rage Italic
 
-### Prerequisites
-
-- Node.js 18+ 
-- npm or yarn
-
-### Installation
-
-1. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-
-2. **Verify video files are in place:**
-   Your 7 videos should be in `/videos/`:
-   - Start.mp4
-   - about.mp4
-   - skills.mp4
-   - projects.mp4
-   - experience.mp4
-   - achivement.mp4
-   - contact.mp4
-
-3. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
-
-4. **Open in browser:**
-   Navigate to [http://localhost:3000](http://localhost:3000)
-
-## Customization Guide
-
-### 1. Personal Information
-
-Update these files with your actual data:
-
-**`lib/data/scenes.ts`** - Scene descriptions and objectives
-
-**`components/sections/HomeScene.tsx`** - Replace `[YOUR NAME]` with your name
-
-**`components/sections/AboutScene.tsx`** - Add your role, location, education, focus
-
-**`components/sections/ContactScene.tsx`** - Update email, GitHub, LinkedIn links
-
-### 2. Projects
-
-**`lib/data/projects.ts`** - Replace placeholder projects with your actual projects:
-```typescript
-{
-  id: 'unique-id',
-  mission: 'MISSION 01',
-  name: 'Your Project Name',
-  category: 'AI / ML',
-  description: 'What problem does it solve?',
-  techStack: ['Python', 'TensorFlow', 'React'],
-  keyResult: 'Key achievement or metric',
-  github: 'https://github.com/you/project',
-  demo: 'https://your-demo.com',
-  status: 'completed',
-}
-```
-
-### 3. Skills
-
-**`lib/data/skills.ts`** - Update skill categories, levels, and technologies
-
-### 4. Experience
-
-**`lib/data/experience.ts`** - Add your work history, education, internships
-
-### 5. Achievements
-
-**`lib/data/achievements.ts`** - Add hackathons, certifications, awards, projects
-
-### 6. Brand Voice
-
-**`components/hud/GameHUD.tsx`** (bottom right) - Change the quote to your personal tagline
-
-**`app/layout.tsx`** - Update metadata (title, description, author name)
-
-## Controls
-
-- **Scroll**: Navigate through scenes
-- **ESC**: Open/close menu
-- **Arrow Keys**: Navigate menu (when open)
-- **Enter**: Select menu item
-- **Click**: Interact with buttons and links
-
-## Project Structure
+## 📁 Project Structure
 
 ```
 portfoliogtatheme/
-├── app/
-│   ├── layout.tsx          # Root layout
-│   ├── page.tsx            # Main portfolio page
-│   └── globals.css         # Global styles
+├── app/                          # Next.js app directory
+│   ├── page.tsx                 # Main page with scene management
+│   ├── layout.tsx               # Root layout
+│   └── globals.css              # Global styles and fonts
 ├── components/
-│   ├── cinematic/
-│   │   ├── CinematicStage.tsx    # Main stage container
-│   │   ├── VideoScene.tsx        # Video player component
-│   │   └── LenisSmoothScroll.tsx # Smooth scroll wrapper
-│   ├── hud/
-│   │   ├── GameHUD.tsx           # Main HUD orchestrator
-│   │   ├── SceneIndicator.tsx    # Top-left scene title
-│   │   ├── StatusBar.tsx         # Top-right stats
-│   │   ├── Objective.tsx         # Bottom-left objective
-│   │   ├── MiniMap.tsx           # Bottom-left map
-│   │   └── GameMenu.tsx          # Navigation menu
-│   ├── sections/
-│   │   ├── HomeScene.tsx
-│   │   ├── AboutScene.tsx
-│   │   ├── SkillsScene.tsx
-│   │   ├── ProjectsScene.tsx
-│   │   ├── ExperienceScene.tsx
-│   │   ├── AchievementsScene.tsx
-│   │   └── ContactScene.tsx
-│   └── ui/
+│   ├── cinematic/               # Video and scroll components
+│   │   ├── CinematicStage.tsx  # Main pinned stage
+│   │   ├── VideoScene.tsx      # Individual video scenes
+│   │   └── LenisSmoothScroll.tsx
+│   ├── hud/                     # Game HUD components
+│   │   ├── GameHUD.tsx         # Main HUD orchestrator
+│   │   ├── GTANavigation.tsx   # Navigation menu
+│   │   ├── SceneIndicator.tsx  # Scene title display
+│   │   ├── StatusBar.tsx       # Stats (money, health, stars)
+│   │   ├── Objective.tsx       # Current objective box
+│   │   └── MiniMap.tsx         # Mini-map with player marker
+│   ├── sections/                # Content sections
+│   │   ├── HomeScene.tsx       # Start screen
+│   │   ├── AboutScene.tsx      # About/Profile section
+│   │   ├── SkillsScene.tsx     # Skills with progress bars
+│   │   ├── ProjectsScene.tsx   # Projects showcase
+│   │   ├── ProjectCard.tsx     # Individual project card
+│   │   ├── ExperienceScene.tsx # Timeline
+│   │   ├── AchievementsScene.tsx # Achievements grid
+│   │   └── ContactScene.tsx    # Contact form
+│   └── ui/                      # UI components
 │       ├── LoadingScreen.tsx
 │       ├── CustomCursor.tsx
 │       └── ScrollIndicator.tsx
 ├── lib/
-│   └── data/
-│       ├── scenes.ts         # Scene configuration
-│       ├── projects.ts       # Project data
-│       ├── skills.ts         # Skill categories
-│       ├── experience.ts     # Work/education history
-│       └── achievements.ts   # Awards & achievements
-├── videos/                   # Your video assets
-└── public/                   # Static assets
-
+│   └── data/                    # Data files
+│       ├── scenes.ts           # Scene configuration
+│       ├── skills.ts           # Skills data
+│       ├── projects.ts         # Projects data
+│       ├── experience.ts       # Experience timeline
+│       └── achievements.ts     # Achievements data
+├── config/
+│   └── siteConfig.ts           # Main configuration file
+├── public/
+│   ├── videos/                 # Scene video backgrounds
+│   ├── images/                 # Images and map
+│   └── fonts/                  # Custom fonts
+└── tailwind.config.ts          # Tailwind configuration
 ```
 
-## Performance Optimization
+## 🎯 Scenes
 
-The portfolio is optimized for performance:
+1. **HOME** - Start screen with navigation menu
+2. **ABOUT** - Profile with age, location, and bio
+3. **SKILLS** - Two-column skill showcase with progress bars
+4. **PROJECTS** - Project cards with links
+5. **EXPERIENCE** - Career timeline
+6. **ACHIEVEMENTS** - Achievement grid
+7. **CONTACT** - Contact information and message form
 
-- Videos are preloaded and paused when not active
-- Lazy loading for off-screen components
-- Reduced motion support for accessibility
-- Compressed video files recommended (H.264, 1920×1080)
-- Film grain and effects use CSS/SVG (lightweight)
+## 🎨 Customization
 
-### Video Optimization Tips
+### Update Content
 
+Edit `config/siteConfig.ts` to update all text content:
+
+```typescript
+export const siteConfig = {
+  personal: {
+    name: "Your Name",
+    age: 20,
+    location: "Your Location",
+    bio: "Your bio...",
+  },
+  contact: {
+    email: "your.email@example.com",
+    linkedin: { url: "...", display: "..." },
+    github: { url: "...", display: "..." },
+  },
+  // ... more configuration
+};
+```
+
+### Update Skills
+
+Edit `lib/data/skills.ts`:
+
+```typescript
+export const skillCategories = [
+  {
+    id: 'skill-1',
+    name: 'AI / ML',
+    level: 85,
+    color: '#00FFFF',
+    skills: ['TensorFlow', 'PyTorch', ...],
+  },
+  // ... more skills
+];
+```
+
+### Update Projects
+
+Edit `lib/data/projects.ts`:
+
+```typescript
+export const projects = [
+  {
+    id: '1',
+    name: 'Your Project',
+    category: 'Category',
+    description: 'Description...',
+    github: 'https://github.com/...',
+    demo: 'https://...',
+  },
+  // ... more projects
+];
+```
+
+### Change Videos
+
+Replace video files in `public/videos/` directory:
+- Start.mp4
+- about.mp4
+- skills.mp4
+- projects.mp4
+- experience.mp4
+- achivement.mp4
+- contact.mp4
+
+### Customize Colors
+
+Edit `tailwind.config.ts`:
+
+```typescript
+colors: {
+  'gta-pink': '#FF006E',     // Main accent color
+  'gta-magenta': '#ff00ff',  // Secondary accent
+  'gta-orange': '#ff6b35',   // Tertiary accent
+}
+```
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Node.js 18+ and npm/yarn/pnpm
+
+### Installation
+
+1. Clone the repository:
 ```bash
-# Compress videos with FFmpeg (recommended)
-ffmpeg -i input.mp4 -vcodec h264 -crf 23 -preset slow -vf scale=1920:1080 output.mp4
+git clone https://github.com/yourusername/portfoliogtatheme.git
+cd portfoliogtatheme
 ```
 
-## Browser Support
-
-- Chrome/Edge 90+
-- Firefox 88+
-- Safari 14+
-- Mobile browsers (iOS Safari, Chrome Mobile)
-
-## Deployment
-
-### Vercel (Recommended)
-
+2. Install dependencies:
 ```bash
-npm run build
-vercel deploy
+npm install
+# or
+yarn install
+# or
+pnpm install
 ```
 
-### Other Platforms
+3. Add your video files to `public/videos/`
+
+4. Add your custom map image to `public/images/` (optional)
+
+5. Update configuration in `config/siteConfig.ts`
+
+6. Run the development server:
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+```
+
+7. Open [http://localhost:3000](http://localhost:3000) in your browser
+
+## 🏗️ Build for Production
 
 ```bash
 npm run build
 npm start
 ```
 
-Build output goes to `.next/` directory.
+## 📝 Key Features Explained
 
-## Troubleshooting
+### Scroll-Controlled Videos
+Videos are pinned to the viewport and transition based on scroll position using GSAP ScrollTrigger.
 
-**Videos not playing:**
-- Check video paths in `/videos/`
-- Ensure videos are H.264 encoded
-- Check browser console for errors
+### Dynamic HUD
+- **Signal**: Fluctuates between 95-100
+- **Time**: Real-time clock (HH:MM:SS)
+- **Money**: Increases $150k per scene ($2.75M → $3.65M)
+- **Health**: Changes per scene (100% → 95% → 85% → 80% → 90% → 100% → 100%)
+- **Stars**: Increases 1-5 stars as you progress
 
-**Scroll not smooth:**
-- Lenis may need initialization delay
-- Check for conflicting scroll libraries
-- Try disabling browser extensions
+### Scene Navigation
+Click navigation items on the home screen to jump directly to any section.
 
-**Performance issues:**
-- Reduce video file sizes
-- Lower video resolution for mobile
-- Disable custom cursor on mobile (already handled)
+### Contact Form
+Centered modal form with smooth animations when "MESSAGE ME" is clicked.
 
-## Future Enhancements
+## 🎮 Fonts
 
-Ready-to-add features:
-- Three.js camera movement and depth effects
-- Particle systems and environmental effects
-- Sound effects (architecture in place)
-- Transitions between scenes (chromatic aberration, glitch)
-- Project detail modals
-- Blog integration
-- Analytics tracking
+- **Pricedown**: Authentic GTA font for headers and labels
+- **Rage Italic**: GTA-style italic font for descriptions and secondary text
 
-## License
+## 📱 Browser Support
 
-This portfolio template is free to use for personal projects. Please do not copy the exact design for commercial template sales.
+- Chrome (recommended)
+- Firefox
+- Safari
+- Edge
 
-## Credits
+## 🤝 Contributing
 
-- **Design Inspiration**: Grand Theft Auto series UI/UX
-- **Fonts**: Bebas Neue (condensed), Pacifico (script), Inter (sans)
-- **Animation**: GSAP by GreenSock
-- **Smooth Scroll**: Lenis by Studio Freight
+Contributions, issues, and feature requests are welcome!
+
+## 📄 License
+
+This project is [MIT](LICENSE) licensed.
+
+## 👨‍💻 Author
+
+**Muruganandam**
+- GitHub: [@yourusername](https://github.com/yourusername)
+- LinkedIn: [Your Profile](https://linkedin.com/in/yourprofile)
+
+## 🙏 Acknowledgments
+
+- Grand Theft Auto series for design inspiration
+- Next.js team for the amazing framework
+- GSAP and Lenis for smooth animations
+- Three.js community
 
 ---
 
-Built with ❤️ using Next.js, GSAP, and cinematic vision.
+⭐ Star this repo if you like it!
